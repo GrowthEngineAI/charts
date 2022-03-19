@@ -3,10 +3,10 @@ entries:
   redis-ha:
   - apiVersion: v2
     appVersion: 6.2.5
-    created: "2022-03-19T07:07:27.72953419Z"
+    created: "2022-03-19T07:50:32.355182302Z"
     description: This Helm chart provides a highly available Redis implementation
       with a master/slave configuration and uses Sentinel sidecars for failover management
-    digest: 5ef522fc7507f357c5870de1dbfed5f3cdb0f7219a09ff599ffb0d70358fbe31
+    digest: d69711d36cf4f2a62b50ddc0090cdbc219b01df7f040c2783046969e5999d134
     home: http://redis.io/
     icon: https://upload.wikimedia.org/wikipedia/en/thumb/6/6b/Redis_Logo.svg/1200px-Redis_Logo.svg.png
     keywords:
@@ -29,9 +29,9 @@ entries:
   stackgres-cluster:
   - apiVersion: v2
     appVersion: 1.2.0
-    created: "2022-03-19T07:07:27.730939351Z"
+    created: "2022-03-19T07:50:32.356562731Z"
     description: StackGres Cluster
-    digest: 21ebc40d78636f8c80a0a60d7df2c4023e6f9b39e6c20e32ca2d67d9c1c55a62
+    digest: 8ed32eed9a15f507fc8cdab85c7572c38dc8a0bba8ce62d9db489b86cb70dfad
     home: https://stackgres.io
     icon: https://assets.gitlab-static.net/uploads/-/system/project/avatar/12584701/logo-stackgres.png?width=64
     keywords:
@@ -55,9 +55,9 @@ entries:
   vgpu-device-plugin:
   - apiVersion: v2
     appVersion: 1.0.0
-    created: "2022-03-19T07:07:27.731460573Z"
+    created: "2022-03-19T07:50:32.357070878Z"
     description: Virtual GPU Device Plugin
-    digest: c66ea8a420433bb9e46f69c75809c180c1de5e42f11b4cb52457edea6638c611
+    digest: ca9ae9376c4512f9f6cc64e2264cefef729b85df38de3a00d7416c3a7b7332c7
     home: https://github.com/growthengineai/charts
     keywords:
     - eks
@@ -74,4 +74,4 @@ entries:
     urls:
     - vgpu-device-plugin-1.0.0.tgz
     version: 1.0.0
-generated: "2022-03-19T07:07:27.725158499Z"
+generated: "2022-03-19T07:50:32.351066119Z"
