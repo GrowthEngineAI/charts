@@ -107,7 +107,11 @@ spec:
     {{- end }}
     {{- end }}
     {{- end }}
-
+    {{- if .Values.cluster.postgresPassword }}
+    - name: update-postgres-password
+      script: |
+        ALTER USER postgres WITH PASSWORD '{{ .Values.cluster.postgresPassword }}';
+    {{- end }}
   {{- end }}
   {{- if .Values.cluster.initialData.scripts }}
     scripts:

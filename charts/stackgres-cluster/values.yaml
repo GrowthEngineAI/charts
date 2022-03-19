@@ -3,6 +3,8 @@ cluster:
   # restart: true
   # restartRole: 
   restartClusterRole: cluster-admin
+  # If enabled, will set the Postgres Admin Password
+  postgresPassword: ""
   restartReducedImpact: true
   restartPrimaryFirst: false
   restartTimeout: 300
