@@ -10,7 +10,7 @@ data:
   {{- if .Values.initScripts.presets.harbor.enabled }}
   {{- range .Values.initScripts.presets.harbor.databases }}
   harbor-db-{{ . }}.sql: |
-    create database if not exists {{ . | quote }} ;
+    CREATE DATABASE {{ . | quote }} ;
   {{- end }}
   harbor-init-0.sql: |
     CREATE USER {{ .Values.initScripts.presets.harbor.user }} WITH SUPERUSER PASSWORD '{{ .Values.initScripts.presets.harbor.password }}';
