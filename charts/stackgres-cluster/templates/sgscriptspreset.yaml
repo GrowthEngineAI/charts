@@ -19,7 +19,7 @@ data:
     CREATE USER "{{ .Values.initScripts.presets.harbor.user }}" ;
     ALTER USER {{ .Values.initScripts.presets.harbor.user }} WITH PASSWORD '{{ .Values.initScripts.presets.harbor.password }}';
     {{- range .Values.initScripts.presets.harbor.databases }}
-    GRANT ALL PRIVILEGES ON DATABASE "{{ . }"         TO {{ .Values.initScripts.presets.harbor.user }} ;
+    GRANT ALL PRIVILEGES ON DATABASE "{{ . }}"         TO {{ .Values.initScripts.presets.harbor.user }} ;
     {{ end }}
   harbor-init-1.sql: |
     CREATE TABLE schema_migrations(version bigint not null primary key, dirty boolean not null);

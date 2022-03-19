@@ -88,6 +88,7 @@ spec:
           name: {{ .Release.Name }}-sql-scripts
           key: harbor-init-0.sql
     - name: harbor-init-1
+      database: harbor-registry
       scriptFrom:
         configMapKeyRef:
           name: {{ .Release.Name }}-sql-scripts
