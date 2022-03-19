@@ -23,7 +23,6 @@ data:
     {{ end }}
   harbor-init-1.sql: |
     CREATE TABLE schema_migrations(version bigint not null primary key, dirty boolean not null);
-  {{ end }}  
   {{ end }}
 
 {{ end }}
