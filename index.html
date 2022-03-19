@@ -1,9 +1,25 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Helm Charts</title>
-    </head>
-    <body>
-        Growth Engine AI hosted Helm charts
-    </body>
+  <head>
+    <title>Growth Engine AI Helm Chart Repository</title>
+  </head>
+  <body>
+    <h1>Growth Engine AI Helm Chart Repository</h1>
+    <p>Point Helm at this repository to see charts.</p>
+
+    <hr>
+
+    <pre>
+# Add this repo
+$ helm repo add growthengineai https://growthengineai.github.io/charts
+"growthengineai" has been added to your repositories
+
+# Search for Charts with Helm 3+
+$ helm search repo growthengineai
+NAME                                 	CHART VERSION	APP VERSION	DESCRIPTION
+growthengineai/redis-ha  	            4.15.0        	           	...
+growthengineai/stackgres-cluster	    1.2.0        	           	...
+
+    </pre>
+  </body>
 </html>
