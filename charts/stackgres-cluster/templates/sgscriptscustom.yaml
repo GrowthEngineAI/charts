@@ -1,0 +1,17 @@
+
+{{ if and .Values.initScripts.enabled .Values.initScripts.customScripts }}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ .Release.Name }}-custom-scripts
+  annotations:
+    meta.helm.sh/release-name: {{ .Release.Name }}
+    meta.helm.sh/release-namespace: {{ .Release.Namespace }}
+  labels:
+    app.kubernetes.io/managed-by: "Helm"
+data:
+  {{- range .Values.initScripts.customScripts }}
+  {{ .name }}.sql: |
+    {{ .data }}
+  {{ end }}  
+{{ end }}

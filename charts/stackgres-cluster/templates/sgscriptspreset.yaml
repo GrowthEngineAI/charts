@@ -1,0 +1,29 @@
+
+{{ if and .Values.initScripts.enabled .Values.initScripts.presets.enabled }}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ .Release.Name }}-sql-scripts
+  annotations:
+    meta.helm.sh/release-name: {{ .Release.Name }}
+    meta.helm.sh/release-namespace: {{ .Release.Namespace }}
+  labels:
+    app.kubernetes.io/managed-by: "Helm"
+data:
+  {{ if .Values.initScripts.presets.harbor.enabled }}
+  {{- range .Values.initScripts.presets.harbor.databases }}
+  harbor-db-{{ . }}.sql: |
+    create database "{{ . }}" ;
+  {{ end }}
+  harbor-init-0.sql: |
+    CREATE USER "{{ .Values.initScripts.presets.harbor.user }}" ;
+    ALTER USER {{ .Values.initScripts.presets.harbor.user }} WITH PASSWORD '{{ .Values.initScripts.presets.harbor.password }}';
+    {{- range .Values.initScripts.presets.harbor.databases }}
+    GRANT ALL PRIVILEGES ON DATABASE "{{ . }"         TO {{ .Values.initScripts.presets.harbor.user }} ;
+    {{ end }}
+  harbor-init-1.sql: |
+    CREATE TABLE schema_migrations(version bigint not null primary key, dirty boolean not null);
+  {{ end }}  
+  {{ end }}
+
+{{ end }}
