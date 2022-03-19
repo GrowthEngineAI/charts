@@ -3,10 +3,10 @@ entries:
   redis-ha:
   - apiVersion: v2
     appVersion: 6.2.5
-    created: "2022-03-19T01:56:50.730309494Z"
+    created: "2022-03-19T02:34:52.969993386Z"
     description: This Helm chart provides a highly available Redis implementation
       with a master/slave configuration and uses Sentinel sidecars for failover management
-    digest: 9b3d7614ba7690f8dc3985e56bf09879d0c801b8f3b083f60c54877731252f5c
+    digest: 035e19d57815dc22ed29354c8c1008bf012cae4e34ad5b5eade8114dd6c47b3c
     home: http://redis.io/
     icon: https://upload.wikimedia.org/wikipedia/en/thumb/6/6b/Redis_Logo.svg/1200px-Redis_Logo.svg.png
     keywords:
@@ -29,9 +29,9 @@ entries:
   stackgres-cluster:
   - apiVersion: v2
     appVersion: 1.2.0
-    created: "2022-03-19T01:56:50.7313959Z"
+    created: "2022-03-19T02:34:52.971265485Z"
     description: StackGres Cluster
-    digest: a63639ea3f4ba236b53d41fb72c5900a9eabbf5bd266def358aecb64771b8cc2
+    digest: b4fa4c9bf5bb48721ebf561bd7230ac91b30285478bbf447593b87eab9bf2353
     home: https://stackgres.io
     icon: https://assets.gitlab-static.net/uploads/-/system/project/avatar/12584701/logo-stackgres.png?width=64
     keywords:
@@ -52,4 +52,4 @@ entries:
     urls:
     - stackgres-cluster-1.2.0.tgz
     version: 1.2.0
-generated: "2022-03-19T01:56:50.726316874Z"
+generated: "2022-03-19T02:34:52.95845699Z"
