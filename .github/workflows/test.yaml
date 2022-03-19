@@ -18,7 +18,7 @@ jobs:
       matrix:
         kubernetesVersion: ["v1.20.0"]
     runs-on: ubuntu-latest
-    if: github.ref != 'refs/heads/main'
+    # if: github.ref != 'refs/heads/main'
     steps:
     - name: Checkout
       uses: actions/checkout@v2
