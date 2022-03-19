@@ -3,10 +3,10 @@ entries:
   redis-ha:
   - apiVersion: v2
     appVersion: 6.2.5
-    created: "2022-03-19T02:54:06.432390625Z"
+    created: "2022-03-19T07:07:27.72953419Z"
     description: This Helm chart provides a highly available Redis implementation
       with a master/slave configuration and uses Sentinel sidecars for failover management
-    digest: 37b7b967d8cdb6edd402bbd8c8a30b7847b29c9b6f23761cb686a6acdbf7ef19
+    digest: 5ef522fc7507f357c5870de1dbfed5f3cdb0f7219a09ff599ffb0d70358fbe31
     home: http://redis.io/
     icon: https://upload.wikimedia.org/wikipedia/en/thumb/6/6b/Redis_Logo.svg/1200px-Redis_Logo.svg.png
     keywords:
@@ -29,9 +29,9 @@ entries:
   stackgres-cluster:
   - apiVersion: v2
     appVersion: 1.2.0
-    created: "2022-03-19T02:54:06.433656725Z"
+    created: "2022-03-19T07:07:27.730939351Z"
     description: StackGres Cluster
-    digest: fc2589928d41a60d34b9a75b0c505737b24383fb8e8db037ef8f0ad89febfd9d
+    digest: 21ebc40d78636f8c80a0a60d7df2c4023e6f9b39e6c20e32ca2d67d9c1c55a62
     home: https://stackgres.io
     icon: https://assets.gitlab-static.net/uploads/-/system/project/avatar/12584701/logo-stackgres.png?width=64
     keywords:
@@ -52,4 +52,26 @@ entries:
     urls:
     - stackgres-cluster-1.2.0.tgz
     version: 1.2.0
-generated: "2022-03-19T02:54:06.428791427Z"
+  vgpu-device-plugin:
+  - apiVersion: v2
+    appVersion: 1.0.0
+    created: "2022-03-19T07:07:27.731460573Z"
+    description: Virtual GPU Device Plugin
+    digest: c66ea8a420433bb9e46f69c75809c180c1de5e42f11b4cb52457edea6638c611
+    home: https://github.com/growthengineai/charts
+    keywords:
+    - eks
+    - vgpu
+    kubeVersion: 1.20.0-0 - 1.23.x-0
+    maintainers:
+    - email: charts@gexai.org
+      name: Growth Engine Inc.
+      url: https://growthengineai.com
+    name: vgpu-device-plugin
+    sources:
+    - https://github.com/growthengineai/charts
+    - https://github.com/awslabs/aws-virtual-gpu-device-plugin
+    urls:
+    - vgpu-device-plugin-1.0.0.tgz
+    version: 1.0.0
+generated: "2022-03-19T07:07:27.725158499Z"
