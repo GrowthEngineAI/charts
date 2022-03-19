@@ -7,6 +7,9 @@ image:
   tag: 6.2.5-alpine
   pullPolicy: IfNotPresent
 
+nameOverride: ""
+fullnameOverride: ""
+
 ## Reference to one or more secrets to be used when pulling images
 ## ref: https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/
 ## This imagePullSecrets is only for redis images

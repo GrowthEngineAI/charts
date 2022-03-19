@@ -1,0 +1,51 @@
+
+{{ if .Values.nodeLabeler.enabled }}
+{{ if not .Values.nodeLabeler.serviceAccount.existing }}
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: {{ .Values.nodeLabeler.serviceAccount.name }}
+  namespace: {{ .Release.Namespace }}
+  annotations:
+    "helm.sh/hook": post-upgrade
+    "helm.sh/hook-delete-policy": before-hook-creation,hook-succeeded
+---
+{{- if .Values.nodeLabeler.serviceAccount.role }}
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: {{ .Values.nodeLabeler.serviceAccount.name }}-role-binding
+  namespace: {{ .Release.Namespace }}
+  annotations:
+    "helm.sh/hook": post-upgrade
+    "helm.sh/hook-delete-policy": before-hook-creation,hook-succeeded
+subjects:
+- kind: ServiceAccount
+  name: {{ .Values.nodeLabeler.serviceAccount.name }}
+  namespace: {{ .Release.Namespace }}
+roleRef:
+  kind: Role
+  name: '{{ .Values.nodeLabeler.serviceAccount.role }}'
+  apiGroup: rbac.authorization.k8s.io
+{{- else }}
+{{- if .Values.nodeLabeler.serviceAccount.clusterRole }}
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: {{ .Values.nodeLabeler.serviceAccount.name }}-cluster-role-binding
+  namespace: {{ .Release.Namespace }}
+  annotations:
+    "helm.sh/hook": post-upgrade
+    "helm.sh/hook-delete-policy": before-hook-creation,hook-succeeded
+subjects:
+- kind: ServiceAccount
+  name: {{ .Values.nodeLabeler.serviceAccount.name }}
+  namespace: {{ .Release.Namespace }}
+roleRef:
+  kind: ClusterRole
+  name: '{{ .Values.nodeLabeler.serviceAccount.clusterRole }}'
+  apiGroup: rbac.authorization.k8s.io
+{{- end }}
+{{- end }}
+{{ end }}
+{{ end }}

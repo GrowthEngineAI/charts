@@ -10,7 +10,11 @@ metadata:
 spec:
   instances: {{ .Values.cluster.instances }}
   postgres:
+    {{- if .Values.initScripts.presets.harbor.enabled }}
+    version: '13.3'
+    {{- else }}
     version: '{{ .Values.cluster.postgres.version }}'
+    {{- end }}
     {{- if .Values.cluster.postgres.flavor }}
     flavor: {{ .Values.cluster.postgres.flavor }}
     {{- end }}
@@ -79,7 +83,7 @@ spec:
     - name: harbor-db-{{ . }}
       scriptFrom:
         configMapKeyRef:
-          name: {{ .Release.Name }}-sql-scripts
+          name: {{ $.Release.Name }}-sql-scripts
           key: harbor-db-{{ . }}.sql
     {{- end }}
     - name: harbor-init-0
@@ -103,7 +107,7 @@ spec:
       {{- end }}
       scriptFrom:
         configMapKeyRef:
-          name: {{ .Release.Name }}-custom-scripts
+          name: {{ $.Release.Name }}-custom-scripts
           key: {{ .name }}.sql
     {{- end }}
     {{- end }}

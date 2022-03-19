@@ -1,0 +1,40 @@
+{{ if .Values.nodeLabeler.enabled }}
+apiVersion: batch/v1beta1
+kind: CronJob
+metadata:
+  name: {{ .Release.Name }}-node-labeler
+  annotations:
+    meta.helm.sh/release-name: {{ .Release.Name }}
+    meta.helm.sh/release-namespace: {{ .Release.Namespace }}
+  labels:
+    app.kubernetes.io/managed-by: Helm
+spec:
+  schedule: {{ .Values.nodeLabeler.schedule | .quote }}
+  concurrencyPolicy: Allow
+  suspend: false
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+            - name: label-nodes
+              image: {{ .Values.nodeLabeler.image | .quote }}
+              command:
+                - sh
+                - '-c'
+                - >
+                  for n in $(kubectl get nodes -l {{ .Values.nodeLabeler.sourceLabel.key }}={{ .Values.nodeLabeler.sourceLabel.value }} -o name) ; do
+                    kubectl annotate --overwrite $n {{ .Values.nodeLabeler.targetLabel.key }}={{ .Values.nodeLabeler.targetLabel.value }}
+                  done
+          {{- if .Values.nodeLabeler.serviceAccount.existing }}
+          serviceAccountName: {{ .Values.nodeLabeler.serviceAccount.existing }}
+          serviceAccount: {{ .Values.nodeLabeler.serviceAccount.existing }}
+          {{- else }}
+          serviceAccountName: {{ .Values.nodeLabeler.serviceAccount.name }}
+          serviceAccount: {{ .Values.nodeLabeler.serviceAccount.name }}
+          {{- end }}
+          {{- if .Values.nodeLabeler.schedulerName }}
+          schedulerName: {{ .Values.nodeLabeler.schedulerName }}
+          {{- end }}
+
+{{ end }}

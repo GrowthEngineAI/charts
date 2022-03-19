@@ -5,10 +5,7 @@ kind: ConfigMap
 metadata:
   name: {{ .Release.Name }}-custom-scripts
   annotations:
-    meta.helm.sh/release-name: {{ .Release.Name }}
-    meta.helm.sh/release-namespace: {{ .Release.Namespace }}
-  labels:
-    app.kubernetes.io/managed-by: "Helm"
+    helm.sh/hook: "pre-install,pre-upgrade,post-install,post-upgrade"
 data:
   {{- range .Values.initScripts.customScripts }}
   {{ .name }}.sql: |

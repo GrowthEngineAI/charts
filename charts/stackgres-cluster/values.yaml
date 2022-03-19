@@ -194,6 +194,8 @@ nonProductionOptions:
 ##   set, choosing the default provisioner.  (gp2 on AWS, standard on
 ##   GKE, AWS & OpenStack)
 defaultStorageClass: ""
+# Disable if creating a cluster within the same namespace
+createInstanceProfiles: true
 # Configures CloudStorage if backupconfig is enabled
 cloudStorage:
   s3:
@@ -210,6 +212,7 @@ cloudStorage:
     # if provided, will create a secret and configure it to be used
     accessKeyId: ""
     secretAccessKey: ""  
+    awsCredentials: {}
   s3Compatible: {}
   #  bucket: stackgres
   #  path: /mypath
@@ -264,6 +267,18 @@ initScripts:
       - harbor-notaryserver
       - harbor-notarysigner
       - harbor-registry
+  bootstrap:
+    enabled: false
+    databases: []
+    # - mydb
+    users: []
+    # - name: myuser
+    #   password: securepass
+    #   superuser: true
+    #   createdb: false
+    #   databases:
+    #   - mydb
+    
 
   # Custom User Added Scripts
   # that will be added into

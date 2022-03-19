@@ -1,0 +1,68 @@
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: {{ .Release.Name }}-daemonset
+  annotations:
+    meta.helm.sh/release-name: {{ .Release.Name }}
+    meta.helm.sh/release-namespace: {{ .Release.Namespace }}
+  labels:
+    app.kubernetes.io/managed-by: Helm
+spec:
+  selector:
+    matchLabels:
+      name: {{ .Release.Name }}
+  updateStrategy:
+    type: RollingUpdate
+  template:
+    metadata:
+      annotations:
+        scheduler.alpha.kubernetes.io/critical-pod: ""
+      labels:
+        name: {{ .Release.Name }}
+    spec:
+      hostIPC: true
+      {{- if .Values.nodeSelector }}
+      nodeSelector: {{ toYaml .Values.nodeSelector | nindent 8 }}
+      {{- end }}
+      {{- if .Values.tolerations }}
+      tolerations: {{ toYaml .Values.tolerations | nindent 8 }}
+      {{- end }}
+      priorityClassName: {{ .Values.priorityClassName }}
+      {{- if .Values.imagePullSecrets }}
+      imagePullSecrets: {{ toYaml .Values.imagePullSecrets | nindent 8 }}
+      {{- end }}
+      initContainers:
+      - name: set-compute-mode
+        image: "{{ .Values.images.cudaInit.image }}:{{ .Values.images.cudaInit.tag }}"
+        command: ['nvidia-smi', '-c', 'EXCLUSIVE_PROCESS']
+        securityContext:
+          capabilities:
+            add: ["SYS_ADMIN"]
+      containers:
+      - name: {{ .Release.Name }}-ctr
+        image: "{{ .Values.images.devicePlugin.image }}:{{ .Values.images.devicePlugin.tag }}"
+        args:
+          - /usr/bin/vgpu-device-plugin
+          - '--vgpu={{ .Values.pluginSettings.vgpus }}'
+        securityContext:
+          allowPrivilegeEscalation: false
+          capabilities:
+            drop: ["ALL"]
+        volumeMounts:
+        - name: device-plugin
+          mountPath: /var/lib/kubelet/device-plugins
+      - image: nvidia/mps
+        name: mps
+        volumeMounts:
+        - name: nvidia-mps
+          mountPath: /tmp/nvidia-mps
+        env:
+        - name: CUDA_MPS_ACTIVE_THREAD_PERCENTAGE
+          value: {{ .Values.pluginSettings.MPSPercentage | .quote }}
+      volumes:
+      - name: device-plugin
+        hostPath:
+          path: /var/lib/kubelet/device-plugins
+      - name: nvidia-mps
+        hostPath:
+          path: /tmp/nvidia-mps

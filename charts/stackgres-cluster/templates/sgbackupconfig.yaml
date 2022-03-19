@@ -5,7 +5,7 @@ metadata:
   name: {{ .Release.Namespace }}-{{ .Release.Name }}-{{ .Values.cluster.configurations.sgBackupConfig }}
   {{- if and .Release.IsInstall .Values.cluster.create }}
   annotations:
-    helm.sh/hook: "pre-install"
+    helm.sh/hook: "pre-install,pre-upgrade"
     meta.helm.sh/release-name: {{ .Release.Name }}
     meta.helm.sh/release-namespace: {{ .Release.Namespace }}
   labels:
@@ -62,8 +62,8 @@ spec:
             name: {{ .Release.Name }}-aws
             key: accessKeyId
             {{- else }}
-            name: "{{ .Values.configurations.backupconfig.storage.s3Compatible.awsCredentials.secretKeySelectors.accessKeyId.name }}"
-            key: "{{ .Values.configurations.backupconfig.storage.s3Compatible.awsCredentials.secretKeySelectors.accessKeyId.key }}"
+            name: "{{ .Values.cloudStorage.s3.awsCredentials.secretKeySelectors.accessKeyId.name }}"
+            key: "{{ .Values.cloudStorage.s3.awsCredentials.secretKeySelectors.accessKeyId.key }}"
             {{- end }}
           secretAccessKey:
             {{- if .Values.cloudStorage.s3.existingSecret }}
@@ -74,8 +74,8 @@ spec:
             name: {{ .Release.Name }}-aws
             key: secretAccessKey
             {{- else }}
-            name: "{{ .Values.configurations.backupconfig.storage.s3Compatible.awsCredentials.secretKeySelectors.secretAccessKey.name }}"
-            key: "{{ .Values.configurations.backupconfig.storage.s3Compatible.awsCredentials.secretKeySelectors.secretAccessKey.key }}"
+            name: "{{ .Values.cloudStorage.s3.awsCredentials.secretKeySelectors.secretAccessKey.name }}"
+            key: "{{ .Values.cloudStorage.s3.awsCredentials.secretKeySelectors.secretAccessKey.key }}"
             {{- end }}
       {{- if .Values.cloudStorage.s3.region }}
       region: "{{ .Values.cloudStorage.s3.region }}"
@@ -84,65 +84,66 @@ spec:
       storageClass: "{{ .Values.cloudStorage.s3.storageClass }}"
       {{- end }}
     {{- end }}
-    {{- if .Values.configurations.backupconfig.storage.s3Compatible }}
+    {{- if .Values.cloudStorage.s3Compatible }}
     type: s3Compatible
     s3Compatible:
-      bucket: "{{ .Values.configurations.backupconfig.storage.s3Compatible.bucket }}"
-      {{- if .Values.configurations.backupconfig.storage.s3Compatible.path }}
-      path: "{{ .Values.configurations.backupconfig.storage.s3Compatible.path }}"
+      bucket: "{{ .Values.cloudStorage.s3Compatible.bucket }}"
+      {{- if .Values.cloudStorage.s3Compatible.path }}
+      path: "{{ .Values.cloudStorage.s3Compatible.path }}"
       {{- end }}
       awsCredentials:
         secretKeySelectors:
           accessKeyId:
-            name: "{{ .Values.configurations.backupconfig.storage.s3Compatible.awsCredentials.secretKeySelectors.accessKeyId.name }}"
-            key: "{{ .Values.configurations.backupconfig.storage.s3Compatible.awsCredentials.secretKeySelectors.accessKeyId.key }}"
+            name: "{{ .Values.cloudStorage.s3Compatible.awsCredentials.secretKeySelectors.accessKeyId.name }}"
+            key: "{{ .Values.cloudStorage.s3Compatible.awsCredentials.secretKeySelectors.accessKeyId.key }}"
           secretAccessKey:
-            name: "{{ .Values.configurations.backupconfig.storage.s3Compatible.awsCredentials.secretKeySelectors.secretAccessKey.name }}"
-            key: "{{ .Values.configurations.backupconfig.storage.s3Compatible.awsCredentials.secretKeySelectors.secretAccessKey.key }}"
-      {{- if .Values.configurations.backupconfig.storage.s3Compatible.region }}
-      region: "{{ .Values.configurations.backupconfig.storage.s3Compatible.region }}"
+            name: "{{ .Values.cloudStorage.s3Compatible.awsCredentials.secretKeySelectors.secretAccessKey.name }}"
+            key: "{{ .Values.cloudStorage.s3Compatible.awsCredentials.secretKeySelectors.secretAccessKey.key }}"
+      {{- if .Values.cloudStorage.s3Compatible.region }}
+      region: "{{ .Values.cloudStorage.s3Compatible.region }}"
       {{- end }}
-      {{- if .Values.configurations.backupconfig.storage.s3Compatible.endpoint }}
-      endpoint: "{{ .Values.configurations.backupconfig.storage.s3Compatible.endpoint }}"
+      {{- if .Values.cloudStorage.s3Compatible.endpoint }}
+      endpoint: "{{ .Values.cloudStorage.s3Compatible.endpoint }}"
       {{- end }}
-      {{- if .Values.configurations.backupconfig.storage.s3Compatible.enablePathStyleAddressing }}
-      enablePathStyleAddressing: {{ .Values.configurations.backupconfig.storage.s3Compatible.enablePathStyleAddressing }}
+      {{- if .Values.cloudStorage.s3Compatible.enablePathStyleAddressing }}
+      enablePathStyleAddressing: {{ .Values.cloudStorage.s3Compatible.enablePathStyleAddressing }}
       {{- end }}
-      {{- if .Values.configurations.backupconfig.storage.s3Compatible.storageClass }}
-      storageClass: "{{ .Values.configurations.backupconfig.storage.s3Compatible.storageClass }}"
+      {{- if .Values.cloudStorage.s3Compatible.storageClass }}
+      storageClass: "{{ .Values.cloudStorage.s3Compatible.storageClass }}"
       {{- end }}
     {{- end }}
-    {{- if .Values.configurations.backupconfig.storage.gcs }}
+    {{- if .Values.cloudStorage.gcs }}
     type: gcs
     gcs:
-      bucket: "{{ .Values.configurations.backupconfig.storage.gcs.bucket }}"
-      {{- if .Values.configurations.backupconfig.storage.gcs.path }}
-      path: "{{ .Values.configurations.backupconfig.storage.gcs.path }}"
+      bucket: "{{ .Values.cloudStorage.gcs.bucket }}"
+      {{- if .Values.cloudStorage.gcs.path }}
+      path: "{{ .Values.cloudStorage.gcs.path }}"
       {{- end }}
       gcpCredentials:
-        {{- if .Values.configurations.backupconfig.storage.gcs.gcpCredentials.fetchCredentialsFromMetadataService }}
-        fetchCredentialsFromMetadataService: {{ .Values.configurations.backupconfig.storage.gcs.gcpCredentials.fetchCredentialsFromMetadataService }}
+        {{- if .Values.cloudStorage.gcs.gcpCredentials.fetchCredentialsFromMetadataService }}
+        fetchCredentialsFromMetadataService: {{ .Values.cloudStorage.gcs.gcpCredentials.fetchCredentialsFromMetadataService }}
         {{- else }}
         secretKeySelectors:
           serviceAccountJSON:
-            name: "{{ .Values.configurations.backupconfig.storage.gcs.gcpCredentials.secretKeySelectors.serviceAccountJSON.name }}"
-            key: "{{ .Values.configurations.backupconfig.storage.gcs.gcpCredentials.secretKeySelectors.serviceAccountJSON.key }}"
+            name: "{{ .Values.cloudStorage.gcs.gcpCredentials.secretKeySelectors.serviceAccountJSON.name }}"
+            key: "{{ .Values.cloudStorage.gcs.gcpCredentials.secretKeySelectors.serviceAccountJSON.key }}"
         {{- end }}
     {{- end }}
-    {{- if .Values.configurations.backupconfig.storage.azureBlob }}
+    {{- if .Values.cloudStorage.azureBlob }}
     type: azureBlob
     azureBlob:
-      bucket: "{{ .Values.configurations.backupconfig.storage.azureBlob.bucket }}"
-      {{- if .Values.configurations.backupconfig.storage.azureBlob.path }}
-      path: "{{ .Values.configurations.backupconfig.storage.azureBlob.path }}"
+      bucket: "{{ .Values.cloudStorage.azureBlob.bucket }}"
+      {{- if .Values.cloudStorage.azureBlob.path }}
+      path: "{{ .Values.cloudStorage.azureBlob.path }}"
       {{- end }}
       azureCredentials:
         secretKeySelectors:
           storageAccount:
-            name: "{{ .Values.configurations.backupconfig.storage.azureBlob.azureCredentials.secretKeySelectors.storageAccount.name }}"
-            key: "{{ .Values.configurations.backupconfig.storage.azureBlob.azureCredentials.secretKeySelectors.storageAccount.key }}"
+            name: "{{ .Values.cloudStorage.azureBlob.azureCredentials.secretKeySelectors.storageAccount.name }}"
+            key: "{{ .Values.cloudStorage.azureBlob.azureCredentials.secretKeySelectors.storageAccount.key }}"
           accessKey:
-            name: "{{ .Values.configurations.backupconfig.storage.azureBlob.azureCredentials.secretKeySelectors.accessKey.name }}"
-            key: "{{ .Values.configurations.backupconfig.storage.azureBlob.azureCredentials.secretKeySelectors.accessKey.key }}"
+            name: "{{ .Values.cloudStorage.azureBlob.azureCredentials.secretKeySelectors.accessKey.name }}"
+            key: "{{ .Values.cloudStorage.azureBlob.azureCredentials.secretKeySelectors.accessKey.key }}"
     {{- end }}
+  {{- end }}
 {{ end }}

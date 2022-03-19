@@ -1,4 +1,4 @@
-{{ if .Values.instanceProfiles }}
+{{ if and .Values.instanceProfiles .Values.createInstanceProfiles }}
 {{- range .Values.instanceProfiles }}
 ---
 apiVersion: stackgres.io/v1

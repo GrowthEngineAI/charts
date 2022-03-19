@@ -1,0 +1,74 @@
+## Reference to one or more secrets to be used when pulling images
+## ref: https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/
+## This imagePullSecrets is only for redis images
+##
+
+#nameOverride: ""
+#fullnameOverride: ""
+images:
+  devicePlugin: 
+    image: amazon/aws-virtual-gpu-device-plugin
+    tag: v0.1.0
+  cudaInit:
+    image: nvidia/cuda
+    tag: 11.3.1-base-ubi8
+
+imagePullSecrets: []
+# - name: "image-pull-secret"
+
+# Which nodes this will run on
+# Be sure to add the label
+# k8s.amazonaws.com/accelerator: vgpu
+# to your kubelet config
+nodeSelector:
+  k8s.amazonaws.com/accelerator: vgpu
+
+tolerations:
+- key: CriticalAddonsOnly
+  operator: Exists
+- key: k8s.amazonaws.com/vgpu
+  operator: Exists
+  effect: NoSchedule
+- key: nvidia/gpu
+  operator: Exists
+  effect: NoSchedule
+- key: nvidia/gpu
+  operator: Exists
+  effect: PreferNoSchedule
+
+priorityClassName: "system-node-critical"
+
+# if using in conjunction with cluster-autoscaler
+# The two tags should be present
+# k8s.io/cluster-autoscaler/node-template/label/k8s.amazonaws.com/accelerator: vgpu
+# k8s.io/cluster-autoscaler/node-template/resources/k8s.amazonaws.com/vgpu: "2" or vgpus
+# https://github.com/awslabs/aws-virtual-gpu-device-plugin/issues/20
+
+pluginSettings:
+  # Total number of vGPUs created
+  # this should be the result of 100 / MPSPercentage
+  # If for example, you want 10 total vGPUs, then MPSPercentage should be 10
+  MPSPercentage: 50
+  vgpus: 2
+
+# Runs a CronJob to label nodes
+# if it's not defined in your kubelet
+nodeLabeler:
+  enabled: false
+  sourceLabel:
+    key: "nvidia/gpu"
+    value: "true"
+  targetLabel: 
+    key: "k8s.amazonaws.com/accelerator"
+    value: "vgpu"
+  
+  image: bitnami/kubectl:1.21.5
+  schedule: '*/2 * * * *'
+  schedulerName: ""
+  serviceAccount:
+    name: nodeLabeler
+    # if existing, will use this one
+    existing: ""
+    # if role, will use role first, otherwise will fallback to clusterRole
+    role: ""
+    clusterRole: cluster-admin

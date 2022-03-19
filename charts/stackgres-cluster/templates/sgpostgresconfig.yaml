@@ -5,7 +5,7 @@ metadata:
   name: {{ .Release.Namespace }}-{{ .Release.Name }}-{{ .Values.cluster.configurations.sgPostgresConfig }}
   {{- if and .Release.IsInstall .Values.cluster.create }}
   annotations:
-    helm.sh/hook: "pre-install"
+    helm.sh/hook: "pre-install,pre-upgrade"
     meta.helm.sh/release-name: {{ .Release.Name }}
     meta.helm.sh/release-namespace: {{ .Release.Namespace }}
   labels:
@@ -13,7 +13,7 @@ metadata:
   {{- end }}
 spec:
   {{- if .Values.initScripts.presets.harbor.enabled }}
-  postgresVersion: "13.3"
+  postgresVersion: "13"
   {{- else }}
   {{- if eq .Values.cluster.postgres.version "latest" }}
   {{- if .Values.cluster.postgres.flavor }}
