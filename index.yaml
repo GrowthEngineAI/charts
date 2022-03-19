@@ -1,0 +1,55 @@
+apiVersion: v1
+entries:
+  redis-ha:
+  - apiVersion: v2
+    appVersion: 6.2.5
+    created: "2022-03-19T01:47:01.743799512Z"
+    description: This Helm chart provides a highly available Redis implementation
+      with a master/slave configuration and uses Sentinel sidecars for failover management
+    digest: 69b4601b5392582ef52817ba41e3542dff4dc7f8f0b425f941c78e1c84166a32
+    home: http://redis.io/
+    icon: https://upload.wikimedia.org/wikipedia/en/thumb/6/6b/Redis_Logo.svg/1200px-Redis_Logo.svg.png
+    keywords:
+    - redis
+    - keyvalue
+    - database
+    maintainers:
+    - email: salimsalaues@gmail.com
+      name: ssalaues
+    - email: aaron.layfield@gmail.com
+      name: dandydeveloper
+    name: redis-ha
+    sources:
+    - https://redis.io/download
+    - https://github.com/DandyDeveloper/charts/blob/master/charts/redis-ha
+    - https://github.com/oliver006/redis_exporter
+    urls:
+    - redis-ha-4.15.0.tgz
+    version: 4.15.0
+  stackgres-cluster:
+  - apiVersion: v2
+    appVersion: 1.2.0
+    created: "2022-03-19T01:47:01.744866326Z"
+    description: StackGres Cluster
+    digest: 46425397963c71eb1233aaa73c58413753fe9edc25beb9c114f39152f9df87e9
+    home: https://stackgres.io
+    icon: https://assets.gitlab-static.net/uploads/-/system/project/avatar/12584701/logo-stackgres.png?width=64
+    keywords:
+    - stackgres
+    - postgresql
+    - postgres
+    - cluster
+    - stack
+    - opinionated
+    kubeVersion: 1.16.0-0 - 1.23.x-0
+    maintainers:
+    - email: info@ongres.com
+      name: OnGres Inc.
+      url: https://ongres.com
+    name: stackgres-cluster
+    sources:
+    - https://gitlab.com/ongresinc/stackgres
+    urls:
+    - stackgres-cluster-1.2.0.tgz
+    version: 1.2.0
+generated: "2022-03-19T01:47:01.740376367Z"
