@@ -10,7 +10,7 @@ data:
   {{- if .Values.initScripts.bootstrap.databases }}
   {{- range .Values.initScripts.bootstrap.databases }}
   bootstrap-initial-db-{{ . }}.sql: |
-    create database if not exists {{ . | quote }} ;
+    CREATE DATABASE {{ . | quote }} ;
   {{- end }}  
   {{- end }}
   {{- if .Values.initScripts.bootstrap.users }}
