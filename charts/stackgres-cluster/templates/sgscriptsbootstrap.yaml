@@ -14,23 +14,23 @@ data:
   {{- end }}  
   {{- end }}
   {{- if .Values.initScripts.bootstrap.users }}
-  {{- range .Values.initScripts.bootstrap.users }}
   bootstrap-initial-users.sql: |
+    {{- range .Values.initScripts.bootstrap.users }}
     {{- if .superuser }}
-    CREATE USER {{ .user }} WITH SUPERUSER PASSWORD '{{ .password }}';
+    CREATE USER {{ .name }} WITH SUPERUSER PASSWORD '{{ .password }}';
     {{- else }}
     {{- if .createdb }}
-    CREATE USER {{ .user }} WITH CREATEDB PASSWORD '{{ .password }}';
+    CREATE USER {{ .name }} WITH CREATEDB PASSWORD '{{ .password }}';
     {{- else }}
-    CREATE USER {{ .user }} WITH PASSWORD '{{ .password }}';
+    CREATE USER {{ .name }} WITH PASSWORD '{{ .password }}';
     {{- end }}
     {{- end }}
     {{- if .databases }}
     {{- range $db := .databases }}
-    GRANT ALL PRIVILEGES ON DATABASE {{ $db | quote }} TO {{ .user }} ;
+    GRANT ALL PRIVILEGES ON DATABASE {{ $db | quote }} TO {{ $.name }} ;
     {{- end }}
     {{- end }}
-  {{- end }}
+    {{- end }}
   {{- end }}
   
 {{ end }}
