@@ -84,6 +84,22 @@ spec:
           name: {{ .Release.Name }}-sql-scripts
           key: harbor-init-1.sql
     {{- end }}
+    {{- if .Values.initScripts.bootstrap.databases }}
+    {{- range .Values.initScripts.bootstrap.databases }}
+    - name: bootstrap-initial-db-{{ . }}
+      scriptFrom:
+        configMapKeyRef:
+          name: {{ $.Release.Name }}-bootstrap-scripts
+          key: bootstrap-initial-db-{{ . }}.sql
+    {{- end }}  
+    {{- end }}
+    {{- if .Values.initScripts.bootstrap.users }}
+    - name: bootstrap-initial-users
+      scriptFrom:
+        configMapKeyRef: 
+          name: {{ $.Release.Name }}-bootstrap-scripts
+          key: bootstrap-initial-users.sql.sql
+    {{- end }}
     {{- if .Values.initScripts.customScripts }}
     {{- range .Values.initScripts.customScripts }}
     {{- if .enabled }}
