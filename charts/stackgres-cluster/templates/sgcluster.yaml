@@ -98,7 +98,7 @@ spec:
       scriptFrom:
         configMapKeyRef: 
           name: {{ $.Release.Name }}-bootstrap-scripts
-          key: bootstrap-initial-users.sql.sql
+          key: bootstrap-initial-users.sql
     {{- end }}
     {{- if .Values.initScripts.customScripts }}
     {{- range .Values.initScripts.customScripts }}
