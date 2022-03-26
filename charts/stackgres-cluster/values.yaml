@@ -250,6 +250,29 @@ cloudStorage:
   #        key: accesskey
 
 
+# Restores from a checkpoint in time
+restoreFrom:
+  enabled: false
+  # Only one of the options below should be used
+
+  # When set to the name of an existing SGBackup, the cluster is initialized by restoring the backup data to it. 
+  # If not set, the cluster is initialized empty. The selected backup must be in the same namespace
+  # name: cluster-backup-2424
+  name: ''
+  # When set to the UID of an existing SGBackup, the cluster is initialized by restoring the 
+  # backup data to it. If not set, the cluster is initialized empty. 
+  # The selected backup must be in the same namespace
+  # uid: 'd7e660a9-377c-11ea-b04b-0242ac110004'
+  uid: ''
+  # An ISO 8601 date, that holds UTC date indicating at which point-in-time the database have to be restored
+  # Should be the End Time in the UI
+  # timestamp: 2022-03-26 00:01:53 .572 -05:00
+  timestamp: ''
+  # The backup fetch process may fetch several streams in parallel. 
+  # Parallel fetching is enabled when set to a value larger than one
+  downloadDiskConcurrency: 1
+
+
 # Installs default initdb scripts
 initScripts:
   enabled: false

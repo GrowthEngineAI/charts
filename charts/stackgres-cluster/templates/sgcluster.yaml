@@ -62,6 +62,23 @@ spec:
   sgInstanceProfile: '{{ .Values.cluster.sgInstanceProfile }}'
   {{- if or .Values.cluster.initialData .Values.initScripts }}
   initialData:
+  {{- if .Values.restoreFrom.enabled }}
+    restore:
+      fromBackup:
+        {{- if .Values.restoreFrom.name }}
+        name: {{ .Values.restoreFrom.name }}
+        {{- end }}
+        {{- if .Values.restoreFrom.uid }}
+        uid: {{ .Values.restoreFrom.uid }}
+        {{- end }}
+        {{- if .Values.restoreFrom.timestamp }}
+        pointInTimeRecovery:
+          restoreToTimestamp: {{ .Values.restoreFrom.timestamp }}
+        {{- end }}
+      {{- if .Values.restoreFrom.downloadDiskConcurrency }}
+      downloadDiskConcurrency: {{ .Values.restoreFrom.downloadDiskConcurrency }}
+      {{- end }}
+  {{- end }}
   {{- if .Values.initScripts.enabled }}
     scripts:
     {{- if .Values.initScripts.presets.harbor.enabled }}
