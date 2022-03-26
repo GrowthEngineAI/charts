@@ -3,7 +3,7 @@ entries:
   budibase:
   - apiVersion: v2
     appVersion: 1.0.48
-    created: "2022-03-22T19:01:09.929119616Z"
+    created: "2022-03-26T06:41:34.216772472Z"
     dependencies:
     - condition: services.couchdb.enabled
       name: couchdb
@@ -15,7 +15,7 @@ entries:
       version: 4.0.13
     description: Budibase is an open source low-code platform, helping thousands of
       teams build apps for their workplace in minutes.
-    digest: 4a2247b31418f6dfa7c24c25630eea0ae8b04a9933c62f90b4f99b9da28f24a4
+    digest: b354d8d586f8bff5611e9b8eb499d8d1d31b43924abf96d173dcc1106248380d
     keywords:
     - low-code
     - database
@@ -31,10 +31,10 @@ entries:
   redis-ha:
   - apiVersion: v2
     appVersion: 6.2.5
-    created: "2022-03-22T19:01:09.932237959Z"
+    created: "2022-03-26T06:41:34.220288217Z"
     description: This Helm chart provides a highly available Redis implementation
       with a master/slave configuration and uses Sentinel sidecars for failover management
-    digest: 10b5572dfaa7baa76d84342b60fec6992d458a3c64f68fd4b14ee1d452c0b9de
+    digest: 06536082787e2dd1dab23464fdef48f43c4b9253a08afe1a0d0c66c42c668d49
     home: http://redis.io/
     icon: https://upload.wikimedia.org/wikipedia/en/thumb/6/6b/Redis_Logo.svg/1200px-Redis_Logo.svg.png
     keywords:
@@ -57,9 +57,9 @@ entries:
   stackgres-cluster:
   - apiVersion: v2
     appVersion: 1.2.0
-    created: "2022-03-22T19:01:09.933533176Z"
+    created: "2022-03-26T06:41:34.221751035Z"
     description: StackGres Cluster
-    digest: a9bc32005b489092cfba4fd70ae8a397e4498fcc368d350710714f25b7ac29c1
+    digest: ed6e848d341b959204742a19e56acf2461fbc23242b90b6c9f7d665ca33791b3
     home: https://stackgres.io
     icon: https://assets.gitlab-static.net/uploads/-/system/project/avatar/12584701/logo-stackgres.png?width=64
     keywords:
@@ -83,9 +83,9 @@ entries:
   vgpu-device-plugin:
   - apiVersion: v2
     appVersion: 1.0.0
-    created: "2022-03-22T19:01:09.934036883Z"
+    created: "2022-03-26T06:41:34.222363143Z"
     description: Virtual GPU Device Plugin
-    digest: 7ea298074cbad328699c7fcc22a97f27003b6a5d2babdb231204ce40a6ade378
+    digest: 4a6798799820a8d774072936237244c5d668995a686be30d4a693c536ad5afb7
     home: https://github.com/growthengineai/charts
     keywords:
     - eks
@@ -102,4 +102,4 @@ entries:
     urls:
     - vgpu-device-plugin-1.0.0.tgz
     version: 1.0.0
-generated: "2022-03-22T19:01:09.922501925Z"
+generated: "2022-03-26T06:41:34.209854283Z"
