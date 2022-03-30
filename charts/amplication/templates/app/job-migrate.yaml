@@ -13,7 +13,7 @@ spec:
       containers:
       - name: "{{ include "amplication.app.name" . }}-migrate"
         image: "{{ .Values.app.image.repository }}:{{ .Values.app.image.tag | default .Chart.AppVersion }}"
-        command: ["/bin/bash"]
+        command: ["/bin/sh"]
         args: ["-c", "npm run migrate:up"]
         env:
         - name: POSTGRESQL_URL
