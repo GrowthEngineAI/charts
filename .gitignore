@@ -15,3 +15,7 @@ __pycache__*
 **test
 **.ipynb**
 **/tooljet/**
+charts/stackgres-cluster/templates/sgcluster copy.yaml
+charts/svix**
+charts/kstone**
+charts/flyte-core**
