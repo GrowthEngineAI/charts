@@ -2,6 +2,8 @@
 
 [Redis](http://redis.io/) is an advanced key-value cache and store. It is often referred to as a data structure server since keys can contain strings, hashes, lists, sets, sorted sets, bitmaps and hyperloglogs.
 
+This version includes support for Redis Modules such as RedisSearch, RedisJSON, etc.
+
 ## TL;DR
 
 ```bash
@@ -36,8 +38,8 @@ Starting from version `4.x` HAProxy sidecar prometheus-exporter removed and repl
 To install the chart
 
 ```bash
-helm repo add dandydev https://dandydeveloper.github.io/charts
-helm install dandydev/redis-ha
+helm repo add growthengineai https://growthengineai.github.io/charts
+helm install growthengineai/redismod-ha
 ```
 
 The command deploys Redis on the Kubernetes cluster in the default configuration. By default this chart install one master pod containing redis master container and sentinel container along with 2 redis slave pods each containing their own sentinel sidecars. The [configuration](#configuration) section lists the parameters that can be configured during installation.
