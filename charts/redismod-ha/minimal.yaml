@@ -1,0 +1,105 @@
+
+replicas: 6
+haproxy:
+  servicePort: 6379
+  containerPort: 6379
+  enabled: true
+
+## Redis specific configuration options
+redis:
+  port: 6379
+  masterGroupName: "mymaster"       # must match ^[\\w-\\.]+$) and can be templated
+  resources:
+    requests:
+      memory: 200Mi
+      cpu: 100m
+    limits:
+      memory: 700Mi
+  modules:
+    search: 
+      enabled: true
+    json: 
+      enabled: true
+    bloom: 
+      enabled: true
+
+## Sentinel specific configuration options
+sentinel:
+  port: 26379
+  resources:
+    requests:
+      memory: 200Mi
+      cpu: 100m
+    limits:
+      memory: 200Mi
+
+
+# Prometheus exporter specific configuration options
+exporter:
+  enabled: true
+
+persistentVolume:
+  enabled: true
+  ## redis-ha data Persistent Volume Storage Class
+  ## If defined, storageClassName: <storageClass>
+  ## If set to "-", storageClassName: "", which disables dynamic provisioning
+  ## If undefined (the default) or set to null, no storageClassName spec is
+  ##   set, choosing the default provisioner.  (gp2 on AWS, standard on
+  ##   GKE, AWS & OpenStack)
+  ##
+  # storageClass: "-"
+  accessModes:
+    - ReadWriteOnce
+  size: 10Gi
+  annotations: {}
+
+# restore init container is executed if restore.[s3|ssh].source is not false
+# restore init container creates /data/dump.rdb_ from original if exists
+# restore init container overrides /data/dump.rdb
+# secrets are stored into environment of init container - stored encoded on k8s
+# REQUIRED for s3 restore: AWS 'access_key' and 'secret_key' or stored in existingSecret
+# EXAMPLE source for s3 restore: 's3://bucket/dump.rdb'
+# REQUIRED for ssh restore: 'key' should be in one line including CR i.e. '-----BEGIN RSA PRIVATE KEY-----\n...\n...\n...\n-----END RSA PRIVATE KEY-----'
+# EXAMPLE source for ssh restore: 'user@server:/path/dump.rdb'
+restore:
+  timeout: 600
+  # Set existingSecret to true to use secret specified in existingSecret above
+  existingSecret: false
+  s3:
+    source: false
+    # If using existingSecret, that secret must contain:
+    # AWS_SECRET_ACCESS_KEY: <YOUR_ACCESS_KEY:>
+    # AWS_ACCESS_KEY_ID: <YOUR_KEY_ID>
+    # If not set the key and ID as strings below:
+    access_key: ""
+    secret_key: ""
+    region: ""
+  ssh:
+    source: false
+    key: ""
+
+## Custom PrometheusRule to be defined
+## The value is evaluated as a template, so, for example, the value can depend on .Release or .Chart
+## ref: https://github.com/coreos/prometheus-operator#customresourcedefinitions
+prometheusRule:
+  # prometheusRule.enabled -- If true, creates a Prometheus Operator PrometheusRule.
+  enabled: false
+  # prometheusRule.additionalLabels -- Additional labels to be set in metadata.
+  additionalLabels: {}
+  # prometheusRule.namespace -- Namespace which Prometheus is running in.
+  namespace:
+  # prometheusRule.interval -- How often rules in the group are evaluated (falls back to `global.evaluation_interval` if not set).
+  interval: 10s
+  # prometheusRule.rules -- Rules spec template (see https://github.com/prometheus-operator/prometheus-operator/blob/master/Documentation/api.md#rule).
+  rules: []
+    # Example:
+    # - alert: RedisPodDown
+    #   expr: |
+    #     redis_up{job="{{ include "redis-ha.fullname" . }}"} == 0
+    #   for: 5m
+    #   labels:
+    #     severity: critical
+    #   annotations:
+    #     description: Redis pod {{ "{{ $labels.pod }}" }} is down
+    #     summary: Redis pod {{ "{{ $labels.pod }}" }} is down
+
