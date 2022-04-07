@@ -3,7 +3,7 @@ entries:
   amplication:
   - apiVersion: v2
     appVersion: 0.5.0
-    created: "2022-04-06T21:08:24.875593244Z"
+    created: "2022-04-07T21:08:41.010331357Z"
     dependencies:
     - alias: postgres
       condition: postgres.install
@@ -11,7 +11,7 @@ entries:
       repository: https://charts.bitnami.com/bitnami
       version: 10.5.2
     description: A Helm chart for Amplication.
-    digest: 58369f72e540e8cf74bdbf90607a4c68a6a92822717664ef953a5ffeb0006640
+    digest: 8aa2cc2af56e2a8222e58b2936538cc0edae668281f2eecc7ef2b0c29fba3b9e
     name: amplication
     type: application
     urls:
@@ -20,7 +20,7 @@ entries:
   budibase:
   - apiVersion: v2
     appVersion: 1.0.48
-    created: "2022-04-06T21:08:24.882196915Z"
+    created: "2022-04-07T21:08:41.016638443Z"
     dependencies:
     - condition: services.couchdb.enabled
       name: couchdb
@@ -32,7 +32,7 @@ entries:
       version: 4.0.13
     description: Budibase is an open source low-code platform, helping thousands of
       teams build apps for their workplace in minutes.
-    digest: 51e14dbc98098cda6d80953bd6b632ac2929418cc5deacc10858ccfc8382aa72
+    digest: dc68b84630e8825b741c8587a0a2c37588ff12afa1271a635df03450892f3183
     keywords:
     - low-code
     - database
@@ -48,10 +48,10 @@ entries:
   redis-ha:
   - apiVersion: v2
     appVersion: 6.2.5
-    created: "2022-04-06T21:08:24.885711153Z"
+    created: "2022-04-07T21:08:41.020874001Z"
     description: This Helm chart provides a highly available Redis implementation
       with a master/slave configuration and uses Sentinel sidecars for failover management
-    digest: e8839d3c3cdc5f4f06c8c95097248fb5eff6e34deda672c2b6287ede4d215f42
+    digest: 71f70e1801dd464abe7eff4a938242e6caf1bffee702eda79c10ea5e3b9fe5f8
     home: http://redis.io/
     icon: https://upload.wikimedia.org/wikipedia/en/thumb/6/6b/Redis_Logo.svg/1200px-Redis_Logo.svg.png
     keywords:
@@ -74,11 +74,11 @@ entries:
   redismod-ha:
   - apiVersion: v2
     appVersion: 6.2.5
-    created: "2022-04-06T21:08:24.888037778Z"
+    created: "2022-04-07T21:08:41.023243633Z"
     description: This Helm chart extends on RedisHA by enabling RedisModules and provides
       a highly available Redis implementation with a master/slave configuration and
       uses Sentinel sidecars for failover management
-    digest: a6bca102705e77bf47ae7ef3543402f09129d6572a7d4a1a06be4c02fdcc789d
+    digest: e274c6897e16c3ce53849afb902d90c8ec12aed3d1638424b1aadb868319a8d0
     home: http://redis.io/
     icon: https://upload.wikimedia.org/wikipedia/en/thumb/6/6b/Redis_Logo.svg/1200px-Redis_Logo.svg.png
     keywords:
@@ -98,9 +98,9 @@ entries:
   stackgres-cluster:
   - apiVersion: v2
     appVersion: 1.2.0
-    created: "2022-04-06T21:08:24.889217691Z"
+    created: "2022-04-07T21:08:41.02447295Z"
     description: StackGres Cluster
-    digest: 0f26617da20b4ab62c43c591d8f8e41a89422e53e2b7224970e5e816f424e2c3
+    digest: 8a01be5b7f30e1adb713fa7b061493cdfe2ea42342dfc3e8a2a76148698bf536
     home: https://stackgres.io
     icon: https://assets.gitlab-static.net/uploads/-/system/project/avatar/12584701/logo-stackgres.png?width=64
     keywords:
@@ -124,9 +124,9 @@ entries:
   vgpu-device-plugin:
   - apiVersion: v2
     appVersion: 1.0.0
-    created: "2022-04-06T21:08:24.889650796Z"
+    created: "2022-04-07T21:08:41.025000657Z"
     description: Virtual GPU Device Plugin
-    digest: 894288b59b38ba341bbd835e1dae82ab1964b654aa93652a2168f491728b6128
+    digest: f4ac91d22c4c2a396ba269e25fbd2eff3278c55b779a01c7801368a6b92f5f4a
     home: https://github.com/growthengineai/charts
     keywords:
     - eks
@@ -143,4 +143,4 @@ entries:
     urls:
     - vgpu-device-plugin-1.0.0.tgz
     version: 1.0.0
-generated: "2022-04-06T21:08:24.870180586Z"
+generated: "2022-04-07T21:08:41.004592579Z"
