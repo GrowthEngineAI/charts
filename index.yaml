@@ -3,7 +3,7 @@ entries:
   amplication:
   - apiVersion: v2
     appVersion: 0.5.0
-    created: "2022-04-21T01:08:19.333873591Z"
+    created: "2022-04-21T04:22:27.200943309Z"
     dependencies:
     - alias: postgres
       condition: postgres.install
@@ -11,7 +11,7 @@ entries:
       repository: https://charts.bitnami.com/bitnami
       version: 10.5.2
     description: A Helm chart for Amplication.
-    digest: f4a176b44346d662e672d97b53dde68da69cd0d88aac72e689437c576660b63d
+    digest: 393342c2f8e8399f12783179fa43cd0de332a793139fb0d3fae337743eee5b3e
     name: amplication
     type: application
     urls:
@@ -20,7 +20,7 @@ entries:
   budibase:
   - apiVersion: v2
     appVersion: 1.0.48
-    created: "2022-04-21T01:08:19.338909795Z"
+    created: "2022-04-21T04:22:27.206482329Z"
     dependencies:
     - condition: services.couchdb.enabled
       name: couchdb
@@ -32,7 +32,7 @@ entries:
       version: 4.0.13
     description: Budibase is an open source low-code platform, helping thousands of
       teams build apps for their workplace in minutes.
-    digest: d5f4ff8bf616ebe47731f99153f1ec79d03dc9c91005b2b50b9c0204e5943527
+    digest: 92fb5b5a3df4d564c6421e234220add0c6b785be30da0a525645dd0648eafe33
     keywords:
     - low-code
     - database
@@ -45,24 +45,47 @@ entries:
     urls:
     - budibase-0.2.8.tgz
     version: 0.2.8
+  kuberay-operator:
+  - apiVersion: v2
+    appVersion: "1.0"
+    created: "2022-04-21T04:22:27.207415432Z"
+    description: A Helm chart for Kubernetes
+    digest: 656645fc5c0a30ae8d7a16a33bfe61d905a5c22d9c0a2cfff5b1e9f0f5399d98
+    icon: https://github.com/ray-project/ray/raw/master/doc/source/images/ray_header_logo.png
+    name: kuberay-operator
+    type: application
+    urls:
+    - kuberay-operator-0.1.0.tgz
+    version: 0.1.0
   ray:
   - apiVersion: v2
     appVersion: latest
-    created: "2022-04-21T01:08:19.340654696Z"
+    created: "2022-04-21T04:22:27.209130639Z"
     description: A Helm chart for deployments of Ray on Kubernetes.
-    digest: 69956821b6b16e202ff4dc1fb93d41862fb4de4e1bf65ad68aac0079aaa31ccd
+    digest: 91fb72c90ce506a2f44c14a09282472b38aa3b50efc73ce9123f23a30374cd40
     name: ray
     type: application
     urls:
     - ray-0.1.0.tgz
     version: 0.1.0
+  ray-cluster:
+  - apiVersion: v1
+    appVersion: "1.0"
+    created: "2022-04-21T04:22:27.209834741Z"
+    description: A Helm chart for Kubernetes
+    digest: 42e51421e0be4ea803a0afab77049270fdf5574d7fb34fc8f860bdb7803f80bd
+    icon: https://github.com/ray-project/ray/raw/master/doc/source/images/ray_header_logo.png
+    name: ray-cluster
+    urls:
+    - ray-cluster-0.1.0.tgz
+    version: 0.1.0
   redis-ha:
   - apiVersion: v2
     appVersion: 6.2.5
-    created: "2022-04-21T01:08:19.343610998Z"
+    created: "2022-04-21T04:22:27.221127083Z"
     description: This Helm chart provides a highly available Redis implementation
       with a master/slave configuration and uses Sentinel sidecars for failover management
-    digest: 90a2cdb144f2eb7e7a37765cef43b9e952b654a3e0d5196f7caeaaf4f21745a9
+    digest: 845e8fa3f45d500405618945a06d287e0aee2af814828380657f7f8382499f21
     home: http://redis.io/
     icon: https://upload.wikimedia.org/wikipedia/en/thumb/6/6b/Redis_Logo.svg/1200px-Redis_Logo.svg.png
     keywords:
@@ -85,11 +108,11 @@ entries:
   redismod-ha:
   - apiVersion: v2
     appVersion: 6.2.5
-    created: "2022-04-21T01:08:19.3458532Z"
+    created: "2022-04-21T04:22:27.223942793Z"
     description: This Helm chart extends on RedisHA by enabling RedisModules and provides
       a highly available Redis implementation with a master/slave configuration and
       uses Sentinel sidecars for failover management
-    digest: 50adf7e760e44bd07b7d1b6509bab669a851589d27efad9fd65a5c7d1c121fff
+    digest: 3a5a64978c75736cd2185f1fc00b63d6744dade3abb7e533b3e3fdbe0fe5cdf5
     home: http://redis.io/
     icon: https://upload.wikimedia.org/wikipedia/en/thumb/6/6b/Redis_Logo.svg/1200px-Redis_Logo.svg.png
     keywords:
@@ -109,9 +132,9 @@ entries:
   stackgres-cluster:
   - apiVersion: v2
     appVersion: 1.2.0
-    created: "2022-04-21T01:08:19.346975801Z"
+    created: "2022-04-21T04:22:27.225280898Z"
     description: StackGres Cluster
-    digest: 8c25abf611917c6caef8a16dd1b4f4eb2a36bc0d8ab6ea9f3db6a771ae8ab56e
+    digest: a768ba17cc68aec441cd74bc69bd94cdddc20bfbb12ef08aab42bd77aef2a37b
     home: https://stackgres.io
     icon: https://assets.gitlab-static.net/uploads/-/system/project/avatar/12584701/logo-stackgres.png?width=64
     keywords:
@@ -135,9 +158,9 @@ entries:
   vgpu-device-plugin:
   - apiVersion: v2
     appVersion: 1.0.0
-    created: "2022-04-21T01:08:19.347393101Z"
+    created: "2022-04-21T04:22:27.2257747Z"
     description: Virtual GPU Device Plugin
-    digest: 24e9736367f0b16c67a7a4dd6eda4e3587537e3aeb83ba9b8bbe67419a15118b
+    digest: 74ce6b1cd14ea775815b0f4718b2aeed17b5b95b4574d5c3c8baae8b316c4431
     home: https://github.com/growthengineai/charts
     keywords:
     - eks
@@ -154,4 +177,4 @@ entries:
     urls:
     - vgpu-device-plugin-1.0.0.tgz
     version: 1.0.0
-generated: "2022-04-21T01:08:19.329196287Z"
+generated: "2022-04-21T04:22:27.194866186Z"
