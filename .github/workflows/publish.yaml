@@ -13,9 +13,10 @@ jobs:
       with:
         submodules: recursive
     
-    - name: Copy Ray Submodule
+    - name: Copy Submodules
       run: |
         cp -r submodules/ray/deploy/charts/ray charts/ray
+        cp -r submodules/kuberay/helm-chart/* charts/
 
     - name: Package and Publish charts
       uses: J12934/helm-gh-pages-action@master

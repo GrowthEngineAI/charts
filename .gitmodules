@@ -1,3 +1,6 @@
 [submodule "submodules/ray"]
 	path = submodules/ray
 	url = https://github.com/ray-project/ray
+[submodule "submodules/kuberay"]
+	path = submodules/kuberay
+	url = https://github.com/ray-project/kuberay
