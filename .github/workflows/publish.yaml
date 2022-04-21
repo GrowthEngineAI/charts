@@ -10,7 +10,9 @@ jobs:
     
     - name: Checkout
       uses: actions/checkout@v2
-    
+      with:
+        submodules: recursive
+
     - name: Package and Publish charts
       uses: J12934/helm-gh-pages-action@master
       with:
