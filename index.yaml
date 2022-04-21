@@ -3,7 +3,7 @@ entries:
   amplication:
   - apiVersion: v2
     appVersion: 0.5.0
-    created: "2022-04-21T01:01:32.87145914Z"
+    created: "2022-04-21T01:08:19.333873591Z"
     dependencies:
     - alias: postgres
       condition: postgres.install
@@ -11,7 +11,7 @@ entries:
       repository: https://charts.bitnami.com/bitnami
       version: 10.5.2
     description: A Helm chart for Amplication.
-    digest: 73fe5776b6b5f3b9c92ececf6de2143be68c1b5a8e8877fbf431d9f2beb5f14e
+    digest: f4a176b44346d662e672d97b53dde68da69cd0d88aac72e689437c576660b63d
     name: amplication
     type: application
     urls:
@@ -20,7 +20,7 @@ entries:
   budibase:
   - apiVersion: v2
     appVersion: 1.0.48
-    created: "2022-04-21T01:01:32.87663936Z"
+    created: "2022-04-21T01:08:19.338909795Z"
     dependencies:
     - condition: services.couchdb.enabled
       name: couchdb
@@ -32,7 +32,7 @@ entries:
       version: 4.0.13
     description: Budibase is an open source low-code platform, helping thousands of
       teams build apps for their workplace in minutes.
-    digest: c0352ffb77ceece8bec810953e7ddbe839973088ba6eb9ab0486a8182fcc7e5e
+    digest: d5f4ff8bf616ebe47731f99153f1ec79d03dc9c91005b2b50b9c0204e5943527
     keywords:
     - low-code
     - database
@@ -45,13 +45,24 @@ entries:
     urls:
     - budibase-0.2.8.tgz
     version: 0.2.8
+  ray:
+  - apiVersion: v2
+    appVersion: latest
+    created: "2022-04-21T01:08:19.340654696Z"
+    description: A Helm chart for deployments of Ray on Kubernetes.
+    digest: 69956821b6b16e202ff4dc1fb93d41862fb4de4e1bf65ad68aac0079aaa31ccd
+    name: ray
+    type: application
+    urls:
+    - ray-0.1.0.tgz
+    version: 0.1.0
   redis-ha:
   - apiVersion: v2
     appVersion: 6.2.5
-    created: "2022-04-21T01:01:32.879996973Z"
+    created: "2022-04-21T01:08:19.343610998Z"
     description: This Helm chart provides a highly available Redis implementation
       with a master/slave configuration and uses Sentinel sidecars for failover management
-    digest: d9e89925df7656c78f4271911c48dd861797e15153f29f5d37bfa2b5f31f8f88
+    digest: 90a2cdb144f2eb7e7a37765cef43b9e952b654a3e0d5196f7caeaaf4f21745a9
     home: http://redis.io/
     icon: https://upload.wikimedia.org/wikipedia/en/thumb/6/6b/Redis_Logo.svg/1200px-Redis_Logo.svg.png
     keywords:
@@ -74,11 +85,11 @@ entries:
   redismod-ha:
   - apiVersion: v2
     appVersion: 6.2.5
-    created: "2022-04-21T01:01:32.882346182Z"
+    created: "2022-04-21T01:08:19.3458532Z"
     description: This Helm chart extends on RedisHA by enabling RedisModules and provides
       a highly available Redis implementation with a master/slave configuration and
       uses Sentinel sidecars for failover management
-    digest: c613eb50ab2d313b627fcb8917fb0ecaed92bcc2f5f81d1f073b785fdd7f05e1
+    digest: 50adf7e760e44bd07b7d1b6509bab669a851589d27efad9fd65a5c7d1c121fff
     home: http://redis.io/
     icon: https://upload.wikimedia.org/wikipedia/en/thumb/6/6b/Redis_Logo.svg/1200px-Redis_Logo.svg.png
     keywords:
@@ -98,9 +109,9 @@ entries:
   stackgres-cluster:
   - apiVersion: v2
     appVersion: 1.2.0
-    created: "2022-04-21T01:01:32.883467087Z"
+    created: "2022-04-21T01:08:19.346975801Z"
     description: StackGres Cluster
-    digest: 554a7edb4b0cccac1eed93bf62e2a4cd162dddaa64cd13cfa14c6ceb4c7d6788
+    digest: 8c25abf611917c6caef8a16dd1b4f4eb2a36bc0d8ab6ea9f3db6a771ae8ab56e
     home: https://stackgres.io
     icon: https://assets.gitlab-static.net/uploads/-/system/project/avatar/12584701/logo-stackgres.png?width=64
     keywords:
@@ -124,9 +135,9 @@ entries:
   vgpu-device-plugin:
   - apiVersion: v2
     appVersion: 1.0.0
-    created: "2022-04-21T01:01:32.883896088Z"
+    created: "2022-04-21T01:08:19.347393101Z"
     description: Virtual GPU Device Plugin
-    digest: 2f6b8aed33ec72b51ad4494c7dd4501545353e62c37bc0c6beaa785c77121de1
+    digest: 24e9736367f0b16c67a7a4dd6eda4e3587537e3aeb83ba9b8bbe67419a15118b
     home: https://github.com/growthengineai/charts
     keywords:
     - eks
@@ -143,4 +154,4 @@ entries:
     urls:
     - vgpu-device-plugin-1.0.0.tgz
     version: 1.0.0
-generated: "2022-04-21T01:01:32.866954122Z"
+generated: "2022-04-21T01:08:19.329196287Z"
