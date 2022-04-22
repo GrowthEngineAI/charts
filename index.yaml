@@ -3,7 +3,7 @@ entries:
   amplication:
   - apiVersion: v2
     appVersion: 0.5.0
-    created: "2022-04-21T04:22:27.200943309Z"
+    created: "2022-04-22T22:15:52.096411423Z"
     dependencies:
     - alias: postgres
       condition: postgres.install
@@ -11,7 +11,7 @@ entries:
       repository: https://charts.bitnami.com/bitnami
       version: 10.5.2
     description: A Helm chart for Amplication.
-    digest: 393342c2f8e8399f12783179fa43cd0de332a793139fb0d3fae337743eee5b3e
+    digest: 8ccc621a8a61b5dfc7c3c413a25f05f18b66ce855aa027dbe4183021be7b31d4
     name: amplication
     type: application
     urls:
@@ -20,7 +20,7 @@ entries:
   budibase:
   - apiVersion: v2
     appVersion: 1.0.48
-    created: "2022-04-21T04:22:27.206482329Z"
+    created: "2022-04-22T22:15:52.101962921Z"
     dependencies:
     - condition: services.couchdb.enabled
       name: couchdb
@@ -32,7 +32,7 @@ entries:
       version: 4.0.13
     description: Budibase is an open source low-code platform, helping thousands of
       teams build apps for their workplace in minutes.
-    digest: 92fb5b5a3df4d564c6421e234220add0c6b785be30da0a525645dd0648eafe33
+    digest: c8e49a18d8f8e505234a7b176765f6b097ec605fa9bb6ad001f881c5851313de
     keywords:
     - low-code
     - database
@@ -48,21 +48,39 @@ entries:
   kuberay-operator:
   - apiVersion: v2
     appVersion: "1.0"
-    created: "2022-04-21T04:22:27.207415432Z"
+    created: "2022-04-22T22:15:52.102545831Z"
     description: A Helm chart for Kubernetes
-    digest: 656645fc5c0a30ae8d7a16a33bfe61d905a5c22d9c0a2cfff5b1e9f0f5399d98
+    digest: 63b79e2e782e57e98fc90b76a04b8220c29763d204ac28872acd668d36d89f79
     icon: https://github.com/ray-project/ray/raw/master/doc/source/images/ray_header_logo.png
     name: kuberay-operator
     type: application
     urls:
     - kuberay-operator-0.1.0.tgz
     version: 0.1.0
+  ngrok-operator:
+  - apiVersion: v2
+    appVersion: 1.3.0
+    created: "2022-04-22T22:15:52.102940938Z"
+    description: Ngrok operator provide developer easy access to private Kubernetes
+      cluster for testing purpose via ngrok. Automate the creation of ngrok tunnel
+      via CRD and automatically reload ngrok session when expired!
+    digest: a235a7955589acc3a05879a8ffcb14507ea80e311de46ac0dadca7def79f5049
+    home: https://github.com/zufardhiyaulhaq/ngrok-operator
+    maintainers:
+    - email: zufardhiyaulhaq@gmail.com
+      name: Zufar Dhiyaulhaq
+      url: https://zufardhiyaulhaq.com
+    name: ngrok-operator
+    type: application
+    urls:
+    - ngrok-operator-1.1.0.tgz
+    version: 1.1.0
   ray:
   - apiVersion: v2
     appVersion: latest
-    created: "2022-04-21T04:22:27.209130639Z"
+    created: "2022-04-22T22:15:52.104376263Z"
     description: A Helm chart for deployments of Ray on Kubernetes.
-    digest: 91fb72c90ce506a2f44c14a09282472b38aa3b50efc73ce9123f23a30374cd40
+    digest: 6c2c7ac12a8621759b8efebb624d6ccf20abe17ca6a196136e60663f250f9a0e
     name: ray
     type: application
     urls:
@@ -71,9 +89,9 @@ entries:
   ray-cluster:
   - apiVersion: v1
     appVersion: "1.0"
-    created: "2022-04-21T04:22:27.209834741Z"
+    created: "2022-04-22T22:15:52.104930973Z"
     description: A Helm chart for Kubernetes
-    digest: 42e51421e0be4ea803a0afab77049270fdf5574d7fb34fc8f860bdb7803f80bd
+    digest: 1ca74f4ab02fa2142225ad9d391bcf975f62c6f5df90e01a7c57b2f69f9ef743
     icon: https://github.com/ray-project/ray/raw/master/doc/source/images/ray_header_logo.png
     name: ray-cluster
     urls:
@@ -82,10 +100,10 @@ entries:
   redis-ha:
   - apiVersion: v2
     appVersion: 6.2.5
-    created: "2022-04-21T04:22:27.221127083Z"
+    created: "2022-04-22T22:15:52.107514418Z"
     description: This Helm chart provides a highly available Redis implementation
       with a master/slave configuration and uses Sentinel sidecars for failover management
-    digest: 845e8fa3f45d500405618945a06d287e0aee2af814828380657f7f8382499f21
+    digest: 52564e9c35f443952a44e3a7e4ee5271b5ca67fec381b9d91825c87bf9a5466f
     home: http://redis.io/
     icon: https://upload.wikimedia.org/wikipedia/en/thumb/6/6b/Redis_Logo.svg/1200px-Redis_Logo.svg.png
     keywords:
@@ -108,11 +126,11 @@ entries:
   redismod-ha:
   - apiVersion: v2
     appVersion: 6.2.5
-    created: "2022-04-21T04:22:27.223942793Z"
+    created: "2022-04-22T22:15:52.110389669Z"
     description: This Helm chart extends on RedisHA by enabling RedisModules and provides
       a highly available Redis implementation with a master/slave configuration and
       uses Sentinel sidecars for failover management
-    digest: 3a5a64978c75736cd2185f1fc00b63d6744dade3abb7e533b3e3fdbe0fe5cdf5
+    digest: 99994da66e71bdad547c6b4f4bf231140c5c0957e4cdbde0f4564971a8fde2f3
     home: http://redis.io/
     icon: https://upload.wikimedia.org/wikipedia/en/thumb/6/6b/Redis_Logo.svg/1200px-Redis_Logo.svg.png
     keywords:
@@ -132,9 +150,9 @@ entries:
   stackgres-cluster:
   - apiVersion: v2
     appVersion: 1.2.0
-    created: "2022-04-21T04:22:27.225280898Z"
+    created: "2022-04-22T22:15:52.111726093Z"
     description: StackGres Cluster
-    digest: a768ba17cc68aec441cd74bc69bd94cdddc20bfbb12ef08aab42bd77aef2a37b
+    digest: 8caab9ca30f9bf8e54dbae9bfa6f0536e0beee8e74365198fda16d9ec423e46c
     home: https://stackgres.io
     icon: https://assets.gitlab-static.net/uploads/-/system/project/avatar/12584701/logo-stackgres.png?width=64
     keywords:
@@ -158,9 +176,9 @@ entries:
   vgpu-device-plugin:
   - apiVersion: v2
     appVersion: 1.0.0
-    created: "2022-04-21T04:22:27.2257747Z"
+    created: "2022-04-22T22:15:52.1121285Z"
     description: Virtual GPU Device Plugin
-    digest: 74ce6b1cd14ea775815b0f4718b2aeed17b5b95b4574d5c3c8baae8b316c4431
+    digest: ecf48a501b43b84cd80be689fc488b03ee242d05bdf74eca30e5281722106f80
     home: https://github.com/growthengineai/charts
     keywords:
     - eks
@@ -177,4 +195,4 @@ entries:
     urls:
     - vgpu-device-plugin-1.0.0.tgz
     version: 1.0.0
-generated: "2022-04-21T04:22:27.194866186Z"
+generated: "2022-04-22T22:15:52.09113333Z"
