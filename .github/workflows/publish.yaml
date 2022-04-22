@@ -17,6 +17,7 @@ jobs:
       run: |
         cp -r submodules/ray/deploy/charts/ray charts/ray
         cp -r submodules/kuberay/helm-chart/* charts/
+        cp -r submodules/ngrok-operator/charts/ngrok-operator charts/ngrok-operator
 
     - name: Package and Publish charts
       uses: J12934/helm-gh-pages-action@master
