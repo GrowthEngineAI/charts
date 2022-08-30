@@ -3,7 +3,7 @@ entries:
   amplication:
   - apiVersion: v2
     appVersion: 0.5.0
-    created: "2022-04-22T22:15:52.096411423Z"
+    created: "2022-08-30T23:54:23.362930315Z"
     dependencies:
     - alias: postgres
       condition: postgres.install
@@ -20,7 +20,7 @@ entries:
   budibase:
   - apiVersion: v2
     appVersion: 1.0.48
-    created: "2022-04-22T22:15:52.101962921Z"
+    created: "2022-08-30T23:54:23.368781727Z"
     dependencies:
     - condition: services.couchdb.enabled
       name: couchdb
@@ -45,12 +45,44 @@ entries:
     urls:
     - budibase-0.2.8.tgz
     version: 0.2.8
+  keydb:
+  - apiVersion: v2
+    appVersion: 6.3.1
+    created: "2022-08-30T23:54:23.36996845Z"
+    description: A Helm chart for KeyDB multimaster setup w/ HA Proxy
+    digest: e63ef95d4c57ecd317e06e61062563385f433f715d6c697016ace24fa602bfec
+    home: https://keydb.dev
+    icon: https://enapter.github.io/charts/keydb.png
+    keywords:
+    - keydb
+    - redis
+    - keyvalue
+    - database
+    - multimaster
+    - HA
+    - high-availability
+    maintainers:
+    - email: avoronkov@enapter.com
+      name: Antiarchitect
+      url: https://github.com/Antiarchitect
+    - email: ts@growthengineai.com
+      name: Tri Songz
+      url: https://github.com/trisongz
+    name: keydb
+    sources:
+    - https://github.com/Enapter/charts
+    - https://github.com/GrowthEngineAI/charts
+    - https://github.com/JohnSully/KeyDB
+    type: application
+    urls:
+    - keydb-0.42.1.tgz
+    version: 0.42.1
   kuberay-operator:
   - apiVersion: v2
     appVersion: "1.0"
-    created: "2022-04-22T22:15:52.102545831Z"
+    created: "2022-08-30T23:54:23.370362258Z"
     description: A Helm chart for Kubernetes
-    digest: 63b79e2e782e57e98fc90b76a04b8220c29763d204ac28872acd668d36d89f79
+    digest: 3203508dacb69059207bb23b10d6ff3866145caba04d0dce02b5f33ae3a70b75
     icon: https://github.com/ray-project/ray/raw/master/doc/source/images/ray_header_logo.png
     name: kuberay-operator
     type: application
@@ -60,11 +92,11 @@ entries:
   ngrok-operator:
   - apiVersion: v2
     appVersion: 1.3.0
-    created: "2022-04-22T22:15:52.102940938Z"
+    created: "2022-08-30T23:54:23.370750365Z"
     description: Ngrok operator provide developer easy access to private Kubernetes
       cluster for testing purpose via ngrok. Automate the creation of ngrok tunnel
       via CRD and automatically reload ngrok session when expired!
-    digest: a235a7955589acc3a05879a8ffcb14507ea80e311de46ac0dadca7def79f5049
+    digest: c8aa130be2c82542efa662d1ada4bbf1678de220a806e25f89289af771b8e8aa
     home: https://github.com/zufardhiyaulhaq/ngrok-operator
     maintainers:
     - email: zufardhiyaulhaq@gmail.com
@@ -78,9 +110,9 @@ entries:
   ray:
   - apiVersion: v2
     appVersion: latest
-    created: "2022-04-22T22:15:52.104376263Z"
+    created: "2022-08-30T23:54:23.37412383Z"
     description: A Helm chart for deployments of Ray on Kubernetes.
-    digest: 6c2c7ac12a8621759b8efebb624d6ccf20abe17ca6a196136e60663f250f9a0e
+    digest: 79993c76c0c0a1fa6acb7fc6d944ea7eea5102035f824db198155f2fb7bc6d88
     name: ray
     type: application
     urls:
@@ -89,9 +121,9 @@ entries:
   ray-cluster:
   - apiVersion: v1
     appVersion: "1.0"
-    created: "2022-04-22T22:15:52.104930973Z"
+    created: "2022-08-30T23:54:23.374704742Z"
     description: A Helm chart for Kubernetes
-    digest: 1ca74f4ab02fa2142225ad9d391bcf975f62c6f5df90e01a7c57b2f69f9ef743
+    digest: f01ad9b122dae2cb9b0e7c3d91bcf54ed8d6d0d1559c5cfbbb60c2771ff3fc28
     icon: https://github.com/ray-project/ray/raw/master/doc/source/images/ray_header_logo.png
     name: ray-cluster
     urls:
@@ -100,10 +132,10 @@ entries:
   redis-ha:
   - apiVersion: v2
     appVersion: 6.2.5
-    created: "2022-04-22T22:15:52.107514418Z"
+    created: "2022-08-30T23:54:23.377404794Z"
     description: This Helm chart provides a highly available Redis implementation
       with a master/slave configuration and uses Sentinel sidecars for failover management
-    digest: 52564e9c35f443952a44e3a7e4ee5271b5ca67fec381b9d91825c87bf9a5466f
+    digest: 66924ca2d2779d2bf0ecabb551f88c02d3998e44680614a6027217bd8e001327
     home: http://redis.io/
     icon: https://upload.wikimedia.org/wikipedia/en/thumb/6/6b/Redis_Logo.svg/1200px-Redis_Logo.svg.png
     keywords:
@@ -126,11 +158,11 @@ entries:
   redismod-ha:
   - apiVersion: v2
     appVersion: 6.2.5
-    created: "2022-04-22T22:15:52.110389669Z"
+    created: "2022-08-30T23:54:23.379741739Z"
     description: This Helm chart extends on RedisHA by enabling RedisModules and provides
       a highly available Redis implementation with a master/slave configuration and
       uses Sentinel sidecars for failover management
-    digest: 99994da66e71bdad547c6b4f4bf231140c5c0957e4cdbde0f4564971a8fde2f3
+    digest: f6ba19fe7b09328537541d55134c741f51ce57b8e945e91b0ae5d46fb7e136b6
     home: http://redis.io/
     icon: https://upload.wikimedia.org/wikipedia/en/thumb/6/6b/Redis_Logo.svg/1200px-Redis_Logo.svg.png
     keywords:
@@ -150,9 +182,9 @@ entries:
   stackgres-cluster:
   - apiVersion: v2
     appVersion: 1.2.0
-    created: "2022-04-22T22:15:52.111726093Z"
+    created: "2022-08-30T23:54:23.380908661Z"
     description: StackGres Cluster
-    digest: 8caab9ca30f9bf8e54dbae9bfa6f0536e0beee8e74365198fda16d9ec423e46c
+    digest: 5f17abdc15de9e03a7d43ece567cff0fc09d9e3ba39499962f18c1695056fc54
     home: https://stackgres.io
     icon: https://assets.gitlab-static.net/uploads/-/system/project/avatar/12584701/logo-stackgres.png?width=64
     keywords:
@@ -176,9 +208,9 @@ entries:
   vgpu-device-plugin:
   - apiVersion: v2
     appVersion: 1.0.0
-    created: "2022-04-22T22:15:52.1121285Z"
+    created: "2022-08-30T23:54:23.381332869Z"
     description: Virtual GPU Device Plugin
-    digest: ecf48a501b43b84cd80be689fc488b03ee242d05bdf74eca30e5281722106f80
+    digest: 43c5bad55310625d5d902992bd396a26296ebffdc33f937a22086d792b59d300
     home: https://github.com/growthengineai/charts
     keywords:
     - eks
@@ -195,4 +227,4 @@ entries:
     urls:
     - vgpu-device-plugin-1.0.0.tgz
     version: 1.0.0
-generated: "2022-04-22T22:15:52.09113333Z"
+generated: "2022-08-30T23:54:23.357022901Z"
