@@ -1,0 +1,27 @@
+apiVersion: v2
+name: keydb
+description: A Helm chart for KeyDB multimaster setup w/ HA Proxy
+type: application
+version: 0.42.1
+keywords:
+- keydb
+- redis
+- keyvalue
+- database
+- multimaster
+- HA
+- high-availability
+home: https://keydb.dev
+maintainers:
+- email: avoronkov@enapter.com
+  name: Antiarchitect
+  url: https://github.com/Antiarchitect
+- email: ts@growthengineai.com
+  name: Tri Songz
+  url: https://github.com/trisongz
+sources:
+- https://github.com/Enapter/charts
+- https://github.com/GrowthEngineAI/charts
+- https://github.com/JohnSully/KeyDB
+icon: https://enapter.github.io/charts/keydb.png
+appVersion: 6.3.1

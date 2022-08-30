@@ -1,0 +1,67 @@
+{{- if .Values.haproxy.enabled }}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "keydb.fullname" . }}-haproxy
+  labels:
+    {{- include "keydb.labels" . | nindent 4 }}
+data:
+  haproxy.cfg: |-
+    global
+      daemon
+      maxconn {{ .Values.haproxy.config.maxconn }}
+
+    defaults
+      mode tcp
+      timeout connect {{ .Values.haproxy.config.timeout.connect }}
+      timeout client {{ .Values.haproxy.config.timeout.client }}
+      timeout server {{ .Values.haproxy.config.timeout.server }}
+    
+    {{- if .Values.haproxy.stats.enabled }}
+    frontend http
+      bind :{{ .Values.haproxy.stats.port }}
+      default_backend stats
+
+    backend stats
+      mode http
+      stats enable
+      stats uri /
+      stats refresh 1s
+      stats show-legends
+      {{- if .Values.haproxy.stats.auth.enabled }}
+      stats auth {{ .Values.haproxy.stats.auth.user }}:{{ .Values.haproxy.stats.auth.password }}
+      {{- end }}
+      stats admin if TRUE
+    {{- end }}
+    
+    defaults REDIS
+      mode tcp
+      timeout connect {{ .Values.haproxy.config.timeout.connect }}
+      timeout client {{ .Values.haproxy.config.timeout.client }}
+      timeout server {{ .Values.haproxy.config.timeout.server }}
+
+    frontend ft_redis
+      bind *:{{ .Values.haproxy.port }} name redis
+      default_backend bk_redis
+      maxconn {{ .Values.haproxy.config.maxconn }}
+    
+    backend bk_redis
+      mode tcp
+      balance first
+      option tcp-check
+      tcp-check send PING\r\n
+      tcp-check expect string +PONG
+      {{- if .Values.activeReplicas }}
+      tcp-check send info\ replication\r\n
+      tcp-check expect string role:active-replica
+      {{- end }}
+      tcp-check send QUIT\r\n
+      tcp-check expect string +OK
+      {{- $replicaCount := .Values.nodes | int }}
+      {{- $namespace := .Release.Namespace }}
+      {{- range $index0 := until $replicaCount }}
+      {{- $index1 := $index0 | add1 }}
+      server keydb{{ $index0 }} {{ include "keydb.fullname" . }}-{{ $index0 }}.{{ include "keydb.fullname" . }}-headless.{{ $namespace }}.svc:6379 maxconn {{ .Values.haproxy.config.maxconn }} check inter {{ .Values.haproxy.config.check }}
+      {{- end }}
+
+{{- end }}
