@@ -59,9 +59,10 @@ data:
       tcp-check expect string +OK
       {{- $replicaCount := .Values.nodes | int }}
       {{- $namespace := .Release.Namespace }}
+      {{- $name := include "keydb.fullname" . }}
       {{- range $index0 := until $replicaCount }}
       {{- $index1 := $index0 | add1 }}
-      server keydb{{ $index0 }} {{ include "keydb.fullname" . }}-{{ $index0 }}.{{ include "keydb.fullname" . }}-headless.{{ $namespace }}.svc:6379 maxconn {{ .Values.haproxy.config.maxconn }} check inter {{ .Values.haproxy.config.check }}
+      server keydb{{ $index0 }} {{ $name }}-{{ $index0 }}.{{ $name }}-headless.{{ $namespace }}.svc:6379 maxconn {{ .Values.haproxy.config.maxconn }} check inter {{ .Values.haproxy.config.check }}
       {{- end }}
 
 {{- end }}
