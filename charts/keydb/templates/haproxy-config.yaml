@@ -62,7 +62,7 @@ data:
       {{- $name := include "keydb.fullname" . }}
       {{- range $index0 := until $replicaCount }}
       {{- $index1 := $index0 | add1 }}
-      server keydb{{ $index0 }} {{ $name }}-{{ $index0 }}.{{ $name }}-headless.{{ $namespace }}.svc:6379 maxconn {{ .Values.haproxy.config.maxconn }} check inter {{ .Values.haproxy.config.check }}
+      server keydb{{ $index0 }} {{ $name }}-{{ $index0 }}.{{ $name }}-headless.{{ $namespace }}.svc:6379 maxconn {{ $.Values.haproxy.config.maxconn }} check inter {{ $.Values.haproxy.config.check }}
       {{- end }}
 
 {{- end }}
